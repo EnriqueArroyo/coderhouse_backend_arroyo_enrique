@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "coderhouse_backend_arroyo_enrique",
+  "version": "1.0.0",
+  "description": "Repositorio de entregas para curso de Backend en Coder House",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnriqueArroyo/coderhouse_backend_arroyo_enrique.git"
+  },
+  "author": "Enrique Arroyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EnriqueArroyo/coderhouse_backend_arroyo_enrique/issues"
+  },
+  "homepage": "https://github.com/EnriqueArroyo/coderhouse_backend_arroyo_enrique#readme"
+}
