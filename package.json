@@ -3,9 +3,9 @@
   "name": "coderhouse_backend_arroyo_enrique",
   "version": "1.0.0",
   "description": "Repositorio de entregas para curso de Backend en Coder House",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/EnriqueArroyo/coderhouse_backend_arroyo_enrique/issues"
   },
-  "homepage": "https://github.com/EnriqueArroyo/coderhouse_backend_arroyo_enrique#readme"
+  "homepage": "https://github.com/EnriqueArroyo/coderhouse_backend_arroyo_enrique#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
