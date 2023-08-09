@@ -1,6 +1,6 @@
 import express from "express";
 const app = express();
-const PORT = 8080;
+const PORT = 8081;
 
 app.use(express.urlencoded({extended:true}));
 
@@ -64,9 +64,12 @@ class ProductManager {
     const products = JSON.parse(await fs.readFile(this.path, "utf-8"));
     const prodByID = products.find((prod) => prod.id === id);
     console.log("Search result:");
-    prodByID ? console.log(prodByID) : console.log("ERROR: The product with id " + id + " does not exist");
 
-    return prodByID;
+    if (prodByID) {
+      return prodByID;
+    } else {
+      console.log("ERROR: The product with id " + id + " does not exist");
+    }
   };
 
   updateProduct = async (id, productDetails) => {
@@ -129,12 +132,17 @@ app.get("/products", async (req, res) => {
   }
 });
 
-app.get("/productos/:pid", async (req, res) => {
+app.get("/products/:pid", async (req, res) => {
   try {
     const pid = parseInt(req.params.pid);
     console.log(pid);
     const product = await pm.getProductsByID(pid);
-    res.send(product);
+
+    if (product) {
+      res.send(product);
+    } else {
+      res.send(`El producto con pid=${pid} no existe`);
+    }
   } catch (error) {
     console.error(error);
     res.send('Error obteniendo el producto por ID');
