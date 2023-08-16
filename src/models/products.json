@@ -29,7 +29,7 @@
   {
     "title": "Tacobell",
     "description": "Disfruta tacos mexicanos",
-    "price": 8.50,
+    "price": 8.5,
     "thumbnail": "Sin imagen",
     "code": "ts554",
     "stock": 25,
@@ -65,7 +65,7 @@
   {
     "title": "Americas",
     "description": "Sabores de diferentes culturas culinarias.",
-    "price": 29.00,
+    "price": 29.0,
     "thumbnail": "Sin imagen",
     "code": "cf443",
     "stock": 15,
@@ -83,7 +83,7 @@
   {
     "title": "Camaronsin",
     "description": "Mariscos frescos y deliciosos",
-    "price": 28.50,
+    "price": 28.5,
     "thumbnail": "Sin imagen",
     "code": "mm331",
     "stock": 18,
