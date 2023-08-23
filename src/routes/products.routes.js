@@ -5,7 +5,6 @@ import { ProductManager } from '../controllers/ProductManager.js';
 const routerProd = Router();
 const productManager = new ProductManager('./src/models/products.json');
 
-//GET
 routerProd.get('/', async (req, res) => {
 	const { limit } = req.query;
 
@@ -22,7 +21,6 @@ routerProd.get('/:pid', async (req, res) => {
 	prod ? res.status(200).send(prod) : res.status(404).send('Producto no existente');
 });
 
-//POST
 routerProd.post('/', async (req, res) => {
 	const confirmacion = await productManager.addProduct(req.body);
 	confirmacion
@@ -30,8 +28,6 @@ routerProd.post('/', async (req, res) => {
 		: res.status(400).send('Producto ya existente');
 });
 
-
-//PUT
 routerProd.put('/:pid', async (req, res) => {
 	const { pid } = req.params;
 	const confirmacion = await productManager.updateProducts(parseInt(pid), req.body);
@@ -40,7 +36,6 @@ routerProd.put('/:pid', async (req, res) => {
 		: res.status(400).send('Producto ya existente');
 });
 
-//DELETE
 routerProd.delete('/:pid', async (req, res) => {
 	const { pid } = req.params;
 	const confirmacion = await productManager.deleteProduct(parseInt(pid));

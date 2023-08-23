@@ -25,7 +25,7 @@ export class CartManager {
 			return false;
 		}
 	}
-	async addProductToCart(cid, pid) {  // agrego al carrito
+	async addProductToCart(cid, pid) { // agrego al carrito
 		this.carts = JSON.parse(await fs.readFile(this.cartsPath, 'utf-8'));
 		const cart = this.carts.find(cart => cart.id === cid);
 
@@ -49,7 +49,7 @@ export class CartManager {
 		}
 	}
 
-	static incrementId(carts) {  //aumento el id del carrito
+	static incrementId(carts) { //aumento el id del carrito
 		const ids = carts.map(cart => cart.id);
 		let newId = 1;
 		carts.length > 0 && (newId = Math.max(...ids) + 1);

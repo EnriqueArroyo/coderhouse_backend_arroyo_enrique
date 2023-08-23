@@ -6,21 +6,17 @@ export class ProductManager {
 		this.path = path;
 	}
 
-
-
 	async addProduct(product) {
 		this.products = JSON.parse(await fs.readFile(this.path, 'utf-8'));
 		const { title, description, price, code, stock, status } = product;
 
-		// verifico si me falta algúN dato
 		if (!title || !description || !price || !status || !code || !stock) {
 			console.log(
-				'Todos los campos deben estar completos'
+				'El producto debe incluir los campos title, description, price, status, code y stock'
 			);
 			return;
 		}
 
-		// verifico el code
 		const prodExists = this.products.find(element => element.code === code);
 		if (prodExists) {
 			return false;
@@ -30,23 +26,22 @@ export class ProductManager {
 			this.products.push(product);
 		}
 
-
 		let writeProducts = JSON.stringify(this.products);
 		await fs.writeFile(this.path, writeProducts);
 		return true;
 	}
 
-	async getProducts() { // obtener productos
+	async getProducts() {
 		this.products = JSON.parse(await fs.readFile(this.path, 'utf-8'));
 		return this.products;
 	}
 
-	async getProductById(id) { //obtener producto por id
+	async getProductById(id) {
 		this.products = JSON.parse(await fs.readFile(this.path, 'utf-8'));
 		return this.products.find(product => product.id == id) ?? false;
 	}
 
-	async updateProducts(id, update) { //actualizar productos
+	async updateProducts(id, update) {
 		this.products = JSON.parse(await fs.readFile(this.path, 'utf-8'));
 		let product = this.products.find(prod => prod.id == id);
 		if (!product) {
@@ -60,7 +55,7 @@ export class ProductManager {
 		return true;
 	}
 
-	async deleteProduct(id) { //borrar producto
+	async deleteProduct(id) {
 		const fileProducts = JSON.parse(await fs.readFile(this.path, 'utf-8'));
 		this.products = fileProducts.filter(prod => prod.id !== id);
 		if (this.products.length === fileProducts.length) {
@@ -71,7 +66,7 @@ export class ProductManager {
 		return true;
 	}
 
-	static incrementId(products) { //recorro los IDs, verifico si hay y retorno el nuevo valor
+	static incrementId(products) {
 		const ids = products.map(product => product.id);
 		let newId = 1;
 		products.length > 0 && (newId = Math.max(...ids) + 1);
@@ -79,5 +74,19 @@ export class ProductManager {
 	}
 }
 
+// class Product {
+// 	constructor({ title, description, price, thumbnail, code, stock }) {
+// 		this.title = title;
+// 		this.description = description;
+// 		this.price = price;
+// 		this.thumbnail = thumbnail;
+// 		this.code = code;
+// 		this.stock = stock;
+// 		this.id = Product.incrementarID();
+// 	}
 
-
+// 	static incrementarID() {
+// 		this.idIncrement ? this.idIncrement++ : (this.idIncrement = 1);
+// 		return this.idIncrement;
+// 	}
+// }
